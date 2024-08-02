@@ -53,6 +53,12 @@ class _HomeViewState extends State<HomeView> {
         centerTitle: true,
         title: const Text("Translator App"),
         actions: [
+          Text(
+            themeProvider.themeDataStyle == ThemesData.darkTheme
+                ? "dark"
+                : "light",
+            style: TextStyle(fontWeight: FontWeight.w200),
+          ),
           Switch(
               value: themeProvider.themeDataStyle == ThemesData.darkTheme
                   ? true
