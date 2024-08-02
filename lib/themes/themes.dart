@@ -14,13 +14,18 @@ class ThemesData {
         backgroundColor: Color.fromRGBO(0, 51, 102, 100),
       ));
   static ThemeData darkTheme = ThemeData(
-      useMaterial3: true,
-      brightness: Brightness.dark,
-      colorScheme: ColorScheme.dark(
-        onSurface: Colors.white,
-        surface: Colors.grey.shade900,
-      ),
-      scaffoldBackgroundColor: Colors.grey.shade900,
-      appBarTheme:
-          const AppBarTheme(backgroundColor: Color.fromRGBO(0, 51, 102, 100)));
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    colorScheme: ColorScheme.dark(
+      onSurface: Colors.white,
+      surface: Colors.grey.shade900,
+    ),
+    scaffoldBackgroundColor: Colors.grey.shade400,
+    appBarTheme:
+        const AppBarTheme(backgroundColor: Color.fromRGBO(0, 51, 102, 100)),
+    switchTheme: SwitchThemeData(
+      overlayColor: WidgetStateProperty.all(Colors.black),
+      trackColor: WidgetStateProperty.all(Colors.grey),
+    ),
+  );
 }
