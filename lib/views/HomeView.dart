@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 // import 'package:translator_app/utils/app_colors.dart';
-
+import 'package:provider/provider.dart';
 import 'package:translator/translator.dart';
+import 'package:translator_app/providers/theme_provider.dart';
+import 'package:translator_app/themes/themes.dart';
 import 'package:translator_app/utils/app_colors.dart';
 
 class HomeView extends StatefulWidget {
@@ -18,6 +20,12 @@ final List<Map<String, String>> languages = [
   {'name': 'French', 'code': 'fr'},
   {'name': 'German', 'code': 'de'},
   {'name': 'Malay', 'code': 'ms'},
+  {'name': 'Arabic', 'code': 'ar'},
+  {'name': 'Greek', 'code': 'el'},
+  {'name': 'Hindi', 'code': 'hi'},
+  {'name': 'Korean', 'code': 'ko'},
+  {'name': 'Italian', 'code': 'it'},
+  {'name': 'Japanese', 'code': 'ja'},
 ];
 String getLanguageName(String code) {
   for (var language in languages) {
@@ -38,10 +46,21 @@ String inputLanguage = "English";
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
-      backgroundColor: Colors.grey.shade700,
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey.shade900,
+        centerTitle: true,
+        title: const Text("Translator App"),
+        actions: [
+          Switch(
+              value: themeProvider.themeDataStyle == ThemesData.darkTheme
+                  ? true
+                  : false,
+              onChanged: (isOn) {
+                themeProvider.changeTheme();
+              })
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
